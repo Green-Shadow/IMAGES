@@ -76,13 +76,16 @@ public class LoginActivity extends AppCompatActivity {
         final String email = _emailText.getText().toString();
         final String password = _passwordText.getText().toString();
 
+        Log.d(TAG,email);
+        Log.d(TAG,password);
+
         // TODO: Implement your own authentication logic here.
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        if (email == DUMMY_EMAIL && password == DUMMY_PASSWORD){
+                        if (email.equals(DUMMY_EMAIL) && password.equals(DUMMY_PASSWORD)){
                             onLoginSuccess();
                         }
                         else{onLoginFailed();}
@@ -111,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginSuccess() {
+        Toast.makeText(getBaseContext(), "Login success", Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
         finish();
     }
