@@ -22,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
     Button _loginButton;
     TextView _signupLink;
 
+    String DUMMY_EMAIL = "test@greenshadow.com";
+    String DUMMY_PASSWORD = "test123$";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,8 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        final String email = _emailText.getText().toString();
+        final String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
 
@@ -79,8 +82,10 @@ public class LoginActivity extends AppCompatActivity {
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
+                        if (email == DUMMY_EMAIL && password == DUMMY_PASSWORD){
+                            onLoginSuccess();
+                        }
+                        else{onLoginFailed();}
                         progressDialog.dismiss();
                     }
                 }, 3000);
