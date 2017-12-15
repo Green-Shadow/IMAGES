@@ -115,6 +115,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         Toast.makeText(getBaseContext(), "Login success", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), ExperienceActivity.class);
+        startActivityForResult(intent, 1);
+        finish();
         _loginButton.setEnabled(true);
         finish();
     }
