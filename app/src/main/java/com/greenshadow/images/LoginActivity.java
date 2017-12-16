@@ -1,7 +1,11 @@
 package com.greenshadow.images;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -40,7 +44,11 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                login();
+                if(isInternetConnected() == false){
+                    Snackbar.make(findViewById(R.id.loginCoordinatorLayout), "No internet connection", Snackbar.LENGTH_LONG)
+                    .show();
+                }
+                else{login();}
             }
         });
 
@@ -149,6 +157,14 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    public boolean isInternetConnected(){
+        ConnectivityManager cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        return isConnected;
     }
 }
 

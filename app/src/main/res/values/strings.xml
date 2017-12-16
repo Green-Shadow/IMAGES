@@ -12,4 +12,6 @@
     <string name="error_field_required">This field is required</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_experience">Feed</string>
+    <string name="title_activity_add_post">New</string>
+    <string name="new_post_placeholder">What do you want to say?</string>
 </resources>

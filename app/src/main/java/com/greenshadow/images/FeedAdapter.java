@@ -24,6 +24,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     @Override
     public FeedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //TODO:Add layout inflation logic
+        TextView test = null;
+        FeedAdapter.ViewHolder v = new FeedAdapter.ViewHolder(test);
+        return v;
     }
 
     @Override
