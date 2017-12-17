@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -51,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
         _passwordText = (EditText)findViewById(R.id.input_password);
         _loginButton = (Button)findViewById(R.id.btn_login);
         _signupLink = (TextView)findViewById(R.id.link_signup);
+
+        SignInButton signInButton = findViewById(R.id.btn_google_login);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -109,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             progressDialog.hide();
+                            onLoginSuccess();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
